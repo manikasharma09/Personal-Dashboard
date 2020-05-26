@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <title>Personal Dashboard</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="/" style="font-family:Times New Roman; font-size:200%;">Pin It Up App</a>
+  <p style="color:white; margin: 10px;">Your one-stop solution to record all your work</p>
+</nav>
+
+<div class="jumbotron jumbotron-fluid text-dark">
+  <div class="container-fluid">
+    <center>
+      <div class="card" style="width:95%;" align="center" >
+        <div class="card-title" style="font-size: xx-large;" align="center"><br><b>Pin It Up</b></div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">To-Do List</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="{% url 'todolists:index' %}" class="btn btn-primary">Go >></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Jot It Down</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="{% url 'jotlists:index' %}" class="btn btn-primary">Go >></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Remind Me</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="{% url 'reminders:index' %}" class="btn btn-primary">Go >></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+        </div>
+      </div>
+    </center>
+  </div>
+</div>
+</body>
+</html>
