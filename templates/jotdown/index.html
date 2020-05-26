@@ -1,0 +1,58 @@
+{% extends "jotlists\base.html" %}
+
+{% block content %}
+<br>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p><br>{% endif %}
+
+<form action="{% url 'jotlists:create_topic' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group col-lg-8">
+    <textarea class="form-control" cols="30" name="topic_name" id="topic_name" placeholder="Add a new topic....."></textarea>
+    <br>
+    <input class="btn btn-primary" style="float:right" type="submit" value="Create new topic">
+    </div>
+</form>
+<br>
+<br>
+<br>
+
+
+{% if topic_list %}
+    {% for topic in topic_list %}
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">
+            <h3 class="card-title">{{ topic.topic_name }}</h3>
+              <div class="float-right" style="font-size: small">
+                 <a href="{% url 'jotlists:remove_topic' topic.id %}" class="btn btn-outline-danger">Delete topic</a>
+              </div>
+              <br><br><br>
+              <form action="{% url 'jotlists:create_list' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group col-lg-8">
+                    <textarea class="form-control" cols="30" name="list_text" id="list_text" placeholder="Add a new item ..."></textarea>
+                    <input type="hidden" class="form-control" name="topic_title" id="topic_title" value="{{ topic.id }}">
+                    <br>
+                    <input class="btn btn-success" style="float:right" type="submit" value="Add new item">
+                    </div>
+                </form>
+                <br>
+                <br>
+                {% if topic.list_set.all %}
+                    <ul class="list-group">
+                    {% for list in topic.list_set.all %}
+                         <li class="list-group-item" style="text-align:left">{{ list.list_text }}
+                        <div class="float-right" style="font-size: small">
+                         <a href="{% url 'jotlists:remove_list' list.id %}" class="btn btn-danger">Delete item</a></div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No item available</p>
+                {% endif %}
+            </div>
+          </div><br>
+    {% endfor %}
+{% else %}
+    <p>No topics are available.</p>
+{% endif %}
+{% endblock content %}
