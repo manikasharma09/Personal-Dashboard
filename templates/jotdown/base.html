@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Jot It Down</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="/" style="font-family:Times New Roman; font-size:200%;">Pin It Up App</a>
+  <p style="color:white; margin: 10px;">Record all your work at one place.</p>
+</nav>
+<div class="jumbotron jumbotron-fluid text-dark">
+  <div class="container-fluid">
+    <center>
+      <div class="card" style="width:95%;" align="center" >
+        <h3 class="card-title" style="font-size: 30px;" align="center"><br><b>Jot It Down</b></h3>
+        <p class="card-subtitle" style="font-size: 18px;" align="center"><br>List anything that you want in an organised manner</p>
+        <div class="card-body" style="font-size: regular;">
+        {% block content %}
+        {% endblock content %}
+        </div>
+      </div>
+    </center>
+  </div>
+</div>
+
+</body>
+</html>
