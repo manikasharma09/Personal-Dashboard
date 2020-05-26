@@ -1,0 +1,31 @@
+{% extends "todolists\base.html" %}
+
+{% block content %}
+<br>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p><br>{% endif %}
+
+<form action="{% url 'todolists:create' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group col-lg-8">
+    <textarea class="form-control" rows="3" cols="50" name="task_text" id="task_text" placeholder="Type something here ..."></textarea>
+    <br>
+    <input class="btn btn-primary" style="float:right" type="submit" value="Add">
+    </div>
+</form>
+<br>
+<br>
+<br>
+
+{% if todo_list %}
+    <ul class="list-group">
+    {% for task in todo_list %}
+        <li class="list-group-item" style="text-align:left">{{ task.text }}
+            <div class="float-right" style="font-size: small"><i>- {{ task.added_date }}  </i>
+             <a href="{% url 'todolists:remove' task.id %}" class="btn btn-danger">Delete</a></div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks are available.</p>
+{% endif %}
+{% endblock content %}
