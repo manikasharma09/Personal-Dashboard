@@ -1,0 +1,33 @@
+{% extends "reminders\base.html" %}
+
+{% block content %}
+<br>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p><br>{% endif %}
+
+{% if reminder %}
+   <div class="card text-center p-5" style="width: 65rem; margin:20px;">
+      <div class="card-body">
+         <div>
+            <h3 class="card-title" style="font-size:24px; color:red;">{{ reminder.text }}</h3>
+            <p style="float:right; font-size:14px;"> - {{ reminder.issued_date }}</p><br>
+         </div>
+        <div>
+            {% if reminder.topic_name %}
+        <p class="card-text" style="font-size:21px; align:center; color:blue;"><i>Topic: {{ reminder.topic_name }}</i></p>
+            {% endif %}
+        </div>
+        <div>
+            <p class="card-text" style="font-size:17px;"><br>
+                Start date : {{ reminder.start_date }}<br>
+                End date : {{ reminder.end_date }}<br>
+            {% if reminder.description %}
+              <br>{{ reminder.description }}<br>
+            {% endif %}
+              </p>
+        </div>
+      </div>
+   </div>
+<br>
+<br>
+{% endif %}
+{% endblock content %}

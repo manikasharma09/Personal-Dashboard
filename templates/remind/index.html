@@ -1,0 +1,119 @@
+{% extends "reminders\base.html" %}
+
+{% block content %}
+<br>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p><br>{% endif %}
+
+<a class="btn btn-primary" href="{% url 'reminders:add' %}">Add new reminder</a>
+<br>
+<br>
+<div class="container">
+        <a class="btn btn-info" href="#Live" role="button"><span class="spinner-grow spinner-grow-sm"></span> Live</a>
+        <a class="btn btn-info" href="#Upcoming" role="button">Upcoming</a>
+        <a class="btn btn-info" href="#Past" role="button">Past</a>
+</div>
+<br>
+<br>
+<div class="card text-center p-1" style="width: 80rem;">
+  <div class="card-body">
+       <a class="card-title" name="Live" style="font-size: 22px; float:center; "><b>Live</b></a>
+      <br>
+      <br>
+       {% if reminder_live %}
+          <ul class="list-group p-3">
+          {% for reminder in reminder_live %}
+              <li class="list-group-item p-5" style="text-align:left; font-size:17px;">
+                 <div>
+                    <span style="font-size:22px;"><u><i>{{ reminder.text }}</i></u></span><br>
+                    <span class="float-right" style="font-size: 14px;">{{ reminder.start_date }} - {{ reminder.end_date }}</span>
+                 </div>
+                  <br>
+                 <div>
+                  {% if reminder.topic_name %}
+                     {{ reminder.topic_name }}
+                  {% endif %}
+                 </div>
+                <br>
+                <div class="float-right" style="font-size: small">
+                    <a href="{% url 'reminders:detail' reminder.id %}" class="btn btn-success">View</a>
+                    <a href="{% url 'reminders:remove' reminder.id %}" class="btn btn-danger">Delete</a>
+                </div>
+             </li>
+              <br>
+              <br>
+          {% endfor %}
+          </ul>
+        {% else %}
+           <p>No reminder available</p>
+        {% endif %}
+  </div>
+</div>
+<br><br>
+<div class="card text-center p-1" style="width: 80rem;">
+  <div class="card-body">
+       <a class="card-title" name="Upcoming" style="font-size: 22px; float:center; "><b>Upcoming</b></a>
+      <br>
+      <br>
+      {% if reminder_upcoming %}
+          <ul class="list-group p-3">
+          {% for reminder in reminder_upcoming %}
+              <li class="list-group-item p-5" style="text-align:left; font-size:17px;">
+                 <div>
+                    <span style="font-size:22px;"><u><i>{{ reminder.text }}</i></u></span><br>
+                    <span class="float-right" style="font-size: 14px;">{{ reminder.start_date }} - {{ reminder.end_date }}</span>
+                 </div>
+                  <br>
+                 <div>
+                  {% if reminder.topic_name %}
+                     {{ reminder.topic_name }}
+                  {% endif %}
+                 </div>
+                <br>
+                <div class="float-right" style="font-size: small">
+                    <a href="{% url 'reminders:detail' reminder.id %}" class="btn btn-success">View</a>
+                    <a href="{% url 'reminders:remove' reminder.id %}" class="btn btn-danger">Delete</a>
+                </div>
+             </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+           <p>No reminder available</p>
+        {% endif %}
+  </div>
+</div>
+<br><br>
+<div class="card text-center p-1" style="width: 80rem;">
+  <div class="card-body">
+       <a class="card-title" name="Past" style="font-size: 22px; float:center; "><b>Past</b></a>
+      <br>
+      <br>
+      {% if reminder_past %}
+          <ul class="list-group p-3">
+          {% for reminder in reminder_past %}
+              <li class="list-group-item p-5" style="text-align:left; font-size:17px;">
+                 <div>
+                    <span style="font-size:22px;"><u><i>{{ reminder.text }}</i></u></span><br>
+                    <span class="float-right" style="font-size: 14px;">{{ reminder.start_date }} - {{ reminder.end_date }}</span>
+                 </div>
+                  <br>
+                 <div>
+                  {% if reminder.topic_name %}
+                     {{ reminder.topic_name }}
+                  {% endif %}
+                 </div>
+                <br>
+                <div class="float-right" style="font-size: small">
+                    <a href="{% url 'reminders:detail' reminder.id %}" class="btn btn-success">View</a>
+                    <a href="{% url 'reminders:remove' reminder.id %}" class="btn btn-danger">Delete</a>
+                </div>
+             </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+           <p>No reminder available</p>
+        {% endif %}
+  </div>
+</div>
+<br>
+<br>
+{% endblock content %}
